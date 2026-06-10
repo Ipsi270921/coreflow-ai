@@ -4,7 +4,9 @@ import os
 DB_PATH = "pipeline_data.db"
 
 # Define the absolute path to ensure the database file sits inside the 'data' folder
-DB_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'pipeline_data.db')
+def initialize_database():
+    connection = sqlite3.connect(DB_PATH)
+    cursor = connection.cursor()
 
 def initialize_database():
     """Connects to SQLite and creates the data tracking table if it doesn't exist."""
